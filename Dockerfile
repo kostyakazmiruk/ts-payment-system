@@ -1,18 +1,22 @@
+# Dockerfile for Transaction Service
+
 FROM node:20
 
-# Set working directory
 WORKDIR /usr/src/app
 
-# Copy the entire project
-COPY . .
-
-# Install dependencies at the root level
+# Copy package files
+COPY package*.json ./
 RUN npm install
 
-# Generate Prisma client
-WORKDIR /usr/src/app/apps/transaction-service
-RUN npx prisma generate
+# Copy all service code
+COPY . .
 
-# Stay in the transaction service directory
-# Command to run the service
-CMD ["npm", "run", "start:dev"]
+# Generate Prisma client - using the correct path
+RUN npx prisma generate --schema=./prisma/schema.prisma
+
+
+# Expose the service port (adjust if needed)
+EXPOSE 3002
+
+# Start the service
+CMD ["npm", "run", "start"]
