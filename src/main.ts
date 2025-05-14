@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { TransactionModule } from './transaction-service.module.module';
+import { TransactionModule } from './transaction-service.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { ConfigService } from '@nestjs/config';
 import { ValidationPipe } from '@nestjs/common';

@@ -25,7 +25,7 @@ export class CreateTransactionHandler
     // Create a new transaction with PENDING status
     const transaction = new Transaction();
     transaction.id = uuidv4();
-    transaction.userId = command.userId;
+    transaction.userId = command.userId || uuidv4();
     transaction.paymentMethodId = command.paymentMethodId;
     transaction.type = command.type;
     transaction.amount = command.amount;
