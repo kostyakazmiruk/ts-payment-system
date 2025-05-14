@@ -14,6 +14,8 @@ COPY . .
 # Generate Prisma client - using the correct path
 RUN npx prisma generate --schema=./prisma/schema.prisma
 
+RUN npx prisma migrate dev --name init --schema=./prisma/schema.prisma
+
 
 # Expose the service port (adjust if needed)
 EXPOSE 3002
